@@ -1,3 +1,5 @@
+import java.nio.charset.Charset;
+import java.util.Random;
 
 class Calculator {
 
@@ -57,7 +59,8 @@ class Calculator {
     if int a = 16 then this method returns: 10000
      */
     String intToBinaryNumber(int n){
-        return null;
+        String result = Integer.toBinaryString(n);
+        return result;
     }
 
     /*
@@ -70,7 +73,11 @@ class Calculator {
      */
     String createUniqueID(String n){
 
-        return null;
+        byte[] array = new byte[7]; // length is bounded by 7
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
+
+        return n + generatedString;
     }
 
 
