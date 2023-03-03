@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -10,10 +11,19 @@ public class Main {
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(System.in));
 
+        Console cnsl
+                = System.console();
 
-        System.out.println("welcome to the calculator\nEnter a command:");
 
-        String val = reader.readLine();
+        System.out.println("welcome to the calculator");
+
+//        String val = reader.readLine();
+//
+//
+
+        // Read line
+        String val = cnsl.readLine(
+                "Enter a command: ");
 
         String[] vals = val.split(" ");
 
