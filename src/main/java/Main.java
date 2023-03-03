@@ -15,31 +15,31 @@ public class Main {
                 = System.console();
 
 
-        System.out.println("welcome to the calculator");
+        System.out.println("welcome to the calculator\nEnter a command: ");
 
-//        String val = reader.readLine();
-//
-//
+        String val = reader.readLine();
+
+
 
         // Read line
-        String val = cnsl.readLine(
-                "Enter a command: ");
+//        String val = cnsl.readLine(
+//                "Enter a command: ");
 
         String[] vals = val.split(" ");
 
-        while (val != "done") {
+        while (!val.equals("done")) {
 
-            if (vals[0] == "add") {
+            if (vals[0].equals("add")) {
                 System.out.println(calculator.add(Integer.parseInt(vals[1]), Integer.parseInt(vals[2])));
-            } else if (vals[0] == "subtract") {
+            } else if (vals[0].equals("subtract")) {
                 System.out.println(calculator.subtract(Integer.parseInt(vals[1]), Integer.parseInt(vals[2])));
-            } else if (vals[0] == "multiply") {
+            } else if (vals[0].equals("multiply")) {
                 System.out.println(calculator.multiply(Integer.parseInt(vals[1]), Integer.parseInt(vals[2])));
-            } else if (vals[0] == "divide") {
+            } else if (vals[0].equals("divide")) {
                 System.out.println(calculator.divide(Integer.parseInt(vals[1]), Integer.parseInt(vals[2])));
-            } else if (vals[0] == "fib") {
+            } else if (vals[0].equals("fib")) {
                 System.out.println(calculator.fibonacciNumberFinder(Integer.parseInt(vals[1])));
-            } else if (vals[0] == "binary") {
+            } else if (vals[0].equals("binary")) {
                 System.out.println(calculator.intToBinaryNumber(Integer.parseInt(vals[1])));
             }
             val = reader.readLine();
