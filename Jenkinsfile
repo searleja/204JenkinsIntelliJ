@@ -49,48 +49,48 @@ pipeline {
                 archiveArtifacts artifacts: 'src/**/*.java'
                 archiveArtifacts artifacts: 'target/*.jar'
             }
-            stage ('Building image') {
 
-                        steps {
+        }
 
-                            script {
+        stage ('Building image') {
 
-                                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                                steps {
 
-                            }
+                                    script {
 
-                        }
+                                        dockerImage = docker.build registry + ":$BUILD_NUMBER"
 
-                    }
-
-            stage ('Deploy Image') {
-                        steps {
-
-                            script {
-
-                                docker.withRegistry('', registryCredential) {
-
-                                    dockerImage.push()
+                                    }
 
                                 }
 
                             }
 
-                        }
+                    stage ('Deploy Image') {
+                                steps {
+
+                                    script {
+
+                                        docker.withRegistry('', registryCredential) {
+
+                                            dockerImage.push()
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                    stage ('Remove unused docker image') {
+
+                                steps {
+
+                                    sh "docker rmi $registry:$BUILD_NUMBER"
+
+                                }
 
                     }
-            stage ('Remove unused docker image') {
-
-                        steps {
-
-                            sh "docker rmi $registry:$BUILD_NUMBER"
-
-                        }
-
-            }
-
-
-        }
 
         post {
 
